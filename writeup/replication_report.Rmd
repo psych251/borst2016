@@ -1,6 +1,6 @@
 ---
 title: "Replication of 'Early Cerebral Constraints on Reading Skills in School-Age Children: An MRI Study' by Borst et al. (2016, Mind, Brain, & Education)"
-author: "Jewelia Yao (jkyao@stanfod.edu)"
+author: "Jewelia Yao (jkyao@stanford.edu)"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
   html_document:
@@ -11,7 +11,7 @@ output:
 ---
 
 
-##Introduction
+## Introduction
 
 Borst et al. (2016) examines the relationship between individual morphological differences in the occipital temporal temporal sulcus (OTS), a sulcus in ventral temporal cortex of the brain, and reading skills in school-aged children. Using anatomical magnetic resonance imaging scans from 16 children, this study classified the OTS in both the right and left hemispheres as either interrupted or continuous based on microgyral breaks in the sulcus. Using multiple linear regressions, they related this binary categorization to oral reading scores on the Alouette-R test and found that children whose left OTS had an interruption performed better than children whose left OTS were continuous. This finding suggests that reading skills can be constrained anatomical features of cerebral cortex. 
 
@@ -25,39 +25,40 @@ Manually labeling and characterizing sulcal anatomy is time intensive and detail
 
 ### Links
 
-Project repository (on Github): https://github.com/psych251/borst2016.git
+Project repository: https://github.com/psych251/borst2016.git
 
-Original paper (as hosted in your repo): https://github.com/psych251/borst2016/blob/master/original_paper/Borst_etal_2016_MindBrainEducation.pdf
+Original paper: https://github.com/psych251/borst2016/blob/master/original_paper/Borst_etal_2016_MindBrainEducation.pdf
 
 
-##Methods
+## Methods
 
-###Power Analysis
+### Power Analysis
 
 Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size.
 
-###Planned Sample
+### Planned Sample
 
-Using pre-collected anatomical MRI data from the Yeatman Lab akin to data used in Borst et al. (2016), I will manually define the OTS i the left and right hemispheres of 16 typically developing, right-handed children (8 females)between the ages of 9 and 11. If time permits, I will label an additional 44 subjects to meet the Developmental Cognitive Neuroscience Journal threshold of N=60.
+Using pre-collected anatomical MRI data from the Yeatman Lab akin to data used in Borst et al. (2016), I will manually define the OTS in the left and right hemispheres of 16 typically developing, right-handed children (8 females) between the ages of 9 and 11. If time permits, I will label an additional 44 subjects to meet the Developmental Cognitive Neuroscience Journal threshold of N=60.
 
-###Materials
+### Materials
 
 **Reading Test**
-Children’s reading proficiency will be evaluated with the
-Test of Word Reading Efficiency(TOWRE)test, which is a standardized test for assessing oral reading in English. Participants are instructed to read off words orally as fast as possible while maintaining correct pronunciation. The test is time-limited (45 seconds). In the present study, we focused on reading accuracy, which was reflected by the number of words that were correctly read in 45sec. Children were tested after completing the MRI.
+Children’s reading proficiency will be evaluated with the Test of Word Reading Efficiency(TOWRE)test, which is a standardized test for assessing oral reading in English. Participants are instructed to read off words orally as fast as possible while maintaining correct pronunciation. The test is time-limited (45 seconds). In the present study, we focused on reading accuracy, which was reflected by the number of words that were correctly read in 45sec. Children were tested after completing the MRI.
 
 **MRI Data Preparation and Acquisition**
 Pre-acquired three-dimensional (3D) T1-weighted spoiled gradient images using a 3T MRI scanner (GE Discovery Scanner, Stanford University). Image analysis was performed with FreeSurfer (https://surfer.nmr.mgh.harvard.edu), version 6.0. An automated pre-processing step was used to skull-strip the T1 MRIs. Volumes were segmented to grey and white matter to produce a reconstruction of the cortical surface as well as a definition of the cortical ribbon. Images at each processing step for each MRI were visually checked and no motion artifacts or segmentation errors were observed.
 
-###Procedure	
+### Procedure	
 Using pre-collected anatomical MRI data, I will process and manually check image quality of T1-weighted anatomical scans in FreeSurfer (https://surfer.nmr.mgh.harvard.edu), a brain imaging program. Given previous experience with labeling sulci and the individual variability, the manual labeling of each hemisphere should take approximately 10 minutes (10min x 2 hemispheres x 16-60 subjects = ~5-20hrs). In FreeSurfer, I will then classify the OTS in the left and right hemisphere of each child (N=16) as interrupted or continuous based on criteria in Borst et al. (2016) which characterizes interruptions in the OTS as ones with gaps that were larger than 20mm. These labels will be confirmed for accuracy by an expert anatomist(s). Following this data processing, I will use multiple linear regressions to relate OTS breakage to reading scores on the Test of Word Reading Efficiency (TOWRE), which is similar to the Alouette-R in that it is an oral, timed reading task. 
 
-###Analysis Plan
+### Analysis Plan
 
 **Reading Statistics & Correlations**
+
 Get average number and standard deviation of words correctly read on the reading test. Correlate age and number of correctly read words.
 
 **Multiple Linear Regressions** 
+
 Model 1: the number of words correctly read as the outcome variable and (a) the sulcal pattern of the lateral OTS in the left hemisphere, (b) the sulcal pattern of the lateral OTS in the right hemisphere, and (c) age in months as predictor variables
 
 Model 2: the number of words correctly read as the outcome variable and age in months as a predictor variable
@@ -65,7 +66,7 @@ Model 2: the number of words correctly read as the outcome variable and age in m
 Model 3: the number of words correctly read as the outcome variable and (a) the sulcal pattern of the lateral OTS in the left hemisphere and (b) the sulcal pattern of the lateral OTS in the right hemisphere as predictor variables
 
 
-###Differences from Original Study
+### Differences from Original Study
 
 Data will not be collected from the same 3T scanner or with the exact same parameters. As T1 images/anatomical scans are typically consistent across 3T scanner, there should not be great scan variation between the quality of anatomical scans from the original study and the present replication.
 
@@ -82,7 +83,7 @@ You can comment this section out prior to final report with data collection.
   Any differences from what was described as the original plan, or “none”.
 
 
-##Results
+## Results
 
 
 ### Data preparation
@@ -107,7 +108,7 @@ The analyses as specified in the analysis plan.
 
 *Side-by-side graph with original graph is ideal here*
 
-###Exploratory analyses
+### Exploratory analyses
 
 Any follow-up analyses desired (not required).  
 
