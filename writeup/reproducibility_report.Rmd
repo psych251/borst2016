@@ -1,0 +1,155 @@
+---
+title: "Reproducibility Report for 'Early Cerebral Constraints on Reading Skills in School-Age Children: An MRI Study' by Borst et al. (2016, Mind, Brain, & Education)"
+author: "Jewelia Yao (jkyao@stanford.edu)"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+---
+
+## Introduction
+
+Borst et al. (2016) examines the relationship between individual morphological differences in the occipital temporal temporal sulcus (OTS), a sulcus in ventral temporal cortex of the brain, and reading skills in school-aged children. Using anatomical magnetic resonance imaging scans from 16 children, this study classified the OTS in both the right and left hemispheres as either interrupted or continuous based on microgyral breaks in the sulcus. Using multiple linear regressions, they related this binary categorization to oral reading scores on the Alouette-R test and found that children whose left OTS had an interruption performed better than children whose left OTS were continuous. This finding suggests that reading skills can be constrained anatomical features of cerebral cortex. 
+
+This reproducibility project aimed to reproduce the anatomical labeling anad analysis methods of Borst et al. (2016) so as to generalize the relationship between individual anatomical variability and behavioral measures. The project sought to find a relationship between neuroanatomy and behavior whereby variations in OTS fragmentation predicts reading abilities. In particular, this study aimed to reproduce the specific findings of Borst et al. (2016) and find that an interrupted left OTS, in comparison to a continuous left OTS, predicts reading in another group of participants. 
+
+### Justification for choice of study
+
+Understanding the neuroanatomical underpinnings of the development of brain function and behavior has been a major interest of developmental neuroscience. Sulci are features that a) have been shown to act as landmarks or boundaries for functional regions in the brain and b) have individual variabilities that are related to aspects of cognition. As characterizing sulci on an individual level is manual and laborious work, previous studies has often analyzed brain structure using group averages, which wash out individual variability in sulcal patterns. Borst et al. (2016) examines sulci on the individual level and relates it to behavior. This result has been of particular interest to me because I am generally interested in the coupling of brain structure, function, and behaviors related to educational development, and specifically, my upcoming work will examine reading development in kids with/without dyslexia and how it relates to aspects of visual cortex (such as sulcal morphology). My previous work has mostly been in prefrontal cortex, so this would be a great opportunity to explore visual cortex anatomy and its relationship to reading.
+
+### Anticipated challenges
+
+Manually labeling and characterizing sulcal anatomy is time intensive and detailed work requiring an understanding of the neighboring sulcal anatomy and precise judgement given cases of extreme variability in sulcal patterning. This will be challenging as I have never worked in this brain region before and because there will likely be cases in which the OTS is harder to idenfity or determine cutoffs. Additionally, navigating brain data also requires manually checking scans for artifacts and preprocessing the raw data which will add time. However, I have both collected and preprocessed neural data before and do not expect this to be a huge setback.
+
+### Links
+
+Project repository: https://github.com/psych251/borst2016.git
+
+Original paper: https://github.com/psych251/borst2016/blob/master/original_paper/Borst_etal_2016_MindBrainEducation.pdf
+
+Paradigm/Labeling: 
+
+## Methods
+### Power Analysis
+
+Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size.
+
+### Participants
+
+Using pre-collected anatomical MRI data from the Lindamood-Bell (LMB) Reading Study conducted by the Brain Development and Education Lab (Yeatman Lab). 16 typically developing, right-handed children (8 females) between the ages of 9 and 11 were analyzed in this study.
+
+### Materials
+
+**Reading Test**
+Children’s reading proficiency were evaluated with the Test of Word Reading Efficiency(TOWRE) test, which is a standardized test for assessing oral reading in English. Participants are instructed to read off words orally as fast as possible while maintaining correct pronunciation. The test is time-limited (45 seconds). In the present study, we focused on reading accuracy, which was reflected by the number of words that were correctly read in 45sec. Children were tested after completing the MRI.
+
+**MRI Data Preparation and Acquisition**
+Pre-acquired three-dimensional (3D) T1-weighted spoiled gradient images using a 3T MRI scanner (GE Discovery Scanner, Stanford University). Image analysis was performed with FreeSurfer (https://surfer.nmr.mgh.harvard.edu), version 6.0. An automated pre-processing step was used to skull-strip the T1 MRIs. Volumes were segmented to grey and white matter to produce a reconstruction of the cortical surface as well as a definition of the cortical ribbon. Images at each processing step for each MRI were visually checked and no motion artifacts or segmentation errors were observed.
+
+
+### Analysis Plan
+
+**Labeling Procedure**	
+Using pre-collected anatomical MRI data, data was processed and manually checked for image quality of T1-weighted anatomical scans in FreeSurfer (https://surfer.nmr.mgh.harvard.edu), a brain imaging program. Using an automated montage code, screenshots of right and left inflated and white inferior view surfaces were compiled in a PowerPoint. The author (JKY) manually labeled each subject's left and right OTS, and these definitions were confirmed by an expert OTS anatomist (JDY). The OTS labels were then inputed into FreeSurfer for analysis.
+
+Each OTS was defined given the following criteria:
+
+1. OTS is delimited posteriorly by a virtual line extending in the direction of ptCoS to the pre-occipital notch
+2. Does not include mid-fusiform sulcus (MFS)
+3. Does not include anterior transveres collateral sulcus (atCoS)
+4. Does not include pre-occipital notch
+
+Defined OTS in each subject's left and right hemisphere were then characterized as interrupted (having interruptions or gaps larger than 20mm) or continuous. The 20mm distance was used in previous literature to avoid labeling artifacts or segmentation errors that present as interruptions in a sulcus. Sulci were labeled with a dichotomous variable code for presence or absence of an interruption.
+
+**Reading Statistics & Correlations**
+
+We found the average number and standard deviation of words correctly read on the reading test. We then correlated age and number of correctly read words.
+
+**Multiple Linear Regressions** 
+
+To determine if there was a relationship between sulcal anatomy and reading abilities, we tested three models.
+
+Model 1: the number of words correctly read as the outcome variable and (a) the sulcal pattern of the lateral OTS in the left hemisphere, (b) the sulcal pattern of the lateral OTS in the right hemisphere, and (c) age in months as predictor variables
+
+Model 2: the number of words correctly read as the outcome variable and age in months as a predictor variable
+
+Model 3: the number of words correctly read as the outcome variable and (a) the sulcal pattern of the lateral OTS in the left hemisphere and (b) the sulcal pattern of the lateral OTS in the right hemisphere as predictor variables
+
+**T-Test**
+
+To determine if either interrupted or continuous left OTS better predicted reading abilities, we conducted a t-test comparing reading scores of subjects with interrupted left hemisphere OTS and subjects with continuous left hemisphere OTS.
+
+### Differences from Original Study
+
+Data will not be collected from the same 3T scanner or with the exact same parameters. As T1 images/anatomical scans are typically consistent across 3T scanner, there should not be great scan variation between the quality of anatomical scans from the original study and the present replication.
+
+The sample will also be an English-speaking one, rather than French, so the oral reading test will also be an English test (TOWRE) equivalent to the Alouette-R. There should not be great differences, as the tests are administered similarly and test for the same things ;additionally, most reading tests are highly correlated with one another. TOWRE is in English, but the Alouette-R test is in French and not applicable to this sample.
+
+
+## Project Progress Check 1
+
+### Measure of success
+
+Please describe the outcome measure for the success or failure of your reproduction and how this outcome will be computed.
+
+
+### Pipeline progress
+
+Data preprocessing is ongoing. Behavioral data for all subjects has been obtained from the LMB study. Anatomical MRI data has also been obtained and is undergoing manual labeling on the PowerPoint.
+
+
+## Results
+
+### Data preparation
+Anatomical data was processed in FreeSurfer using reconall. Using a montage code (below), screenshots of each inferior surface (inflated/white) of the right and left hemispheres for eachs subject was obtained. Data was manually labeled by the author (JKY) in PowerPoint. After being confirmed or edited by an expert anatomist, the labels were inputed into FreeSurfer. Subjects were excluded if their MRI data showed too much motion, artifacts, or did not have behavioral data. 
+
+```{bash include=F}
+
+### Data Preparation
+# Montage/Screenshot Code
+SUBJECTS_DIR=/Users/jkyao/oak/LMB_Stanford/LMB_BIDS/derivatives/freesurfer
+OUT_DIR=/Users/jkyao/Desktop/LMB
+sublist=("107" "108" "1210" "1211" "1215" "1234" "1335" "1339" "1380" "1395" "1444" "1452" "1453" "1468" "173" "230" "309" "984")
+surfaceTypes=("inflated" "pial" "white")
+
+
+for SUB in ${sublist[@]};do
+	echo $SUB
+	for surf in ${surfaceTypes[@]};do
+		echo $surf
+		freeview -f ${SUBJECTS_DIR}/sub-${SUB}/surf/rh.${surf}:curvature_method=binary -viewport 3D -f ${SUBJECTS_DIR}/sub-${SUB}/surf/lh.${surf}:curvature_method=binary -viewport 3D -view inferior -ss ${OUT_DIR}/${surf}/${SUB}_${surf}_inferior.png
+	done
+done
+
+#### Load Relevant Libraries and Functions
+
+#### Import data
+
+#### Data exclusion / filtering
+##### Subjects were excluded if their MRI data showed too much motion, artifacts, or did not have behavioral data. 
+
+#### Prepare data for analysis - create columns etc.
+```
+
+### Key analysis (Confirmatory Analysis)
+
+After conducting multiple regressions to dertiment the variable (left or right OTS, age) that was most associated with reading, Borst et al. (2016) conducted a t-test comparing reading scores of subjects with interrupted OTS versus continous OTS. This determined which left hemisphere OTS pattern was a better predictor of reading abilities. 
+
+*Side-by-side graph with original graph is ideal here*
+
+###Exploratory analyses
+
+Any follow-up analyses desired (not required).  
+
+## Discussion
+
+### Summary of Reproduction Attempt
+
+Open the discussion section with a paragraph summarizing the primary result from the key analysis and assess whether you successfully reproduced it, partially reproduced it, or failed to reproduce it.  
+
+### Commentary
+
+Add open-ended commentary (if any) reflecting (a) insights from follow-up exploratory analysis of the dataset, (b) assessment of the meaning of the successful or unsuccessful reproducibility attempt - e.g., for a failure to reproduce the original findings, are the differences between original and present analyses ones that definitely, plausibly, or are unlikely to have been moderators of the result, and (c) discussion of any objections or challenges raised by the current and original authors about the reproducibility attempt (if you contacted them).  None of these need to be long.
