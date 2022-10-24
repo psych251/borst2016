@@ -1566,7 +1566,9 @@ expect this to be a huge setback.</p>
 <h3>Links</h3>
 <p>Project repository: <a href="https://github.com/psych251/borst2016.git" class="uri">https://github.com/psych251/borst2016.git</a></p>
 <p>Original paper: <a href="https://github.com/psych251/borst2016/blob/master/original_paper/Borst_etal_2016_MindBrainEducation.pdf" class="uri">https://github.com/psych251/borst2016/blob/master/original_paper/Borst_etal_2016_MindBrainEducation.pdf</a></p>
-<p>Paradigm/Labeling:</p>
+<p><strong>Paradigm</strong></p>
+<p>Labeling PowerPoint: <a href="https://github.com/psych251/borst2016/blob/master/LMB_OTS_Labels.pptx" class="uri">https://github.com/psych251/borst2016/blob/master/LMB_OTS_Labels.pptx</a></p>
+<p>TOWRE: <a href="https://github.com/psych251/borst2016/blob/master/TOWREScoring.pdf" class="uri">https://github.com/psych251/borst2016/blob/master/TOWREScoring.pdf</a></p>
 </div>
 </div>
 <div id="methods" class="section level2">
@@ -1603,7 +1605,8 @@ Volumes were segmented to grey and white matter to produce a
 reconstruction of the cortical surface as well as a definition of the
 cortical ribbon. Images at each processing step for each MRI were
 visually checked and no motion artifacts or segmentation errors were
-observed.</p>
+observed. If segmentations could not be fixed, ubjects were excluded on
+the basis of motion artifacts or general segmentation artifacts.</p>
 </div>
 <div id="analysis-plan" class="section level3">
 <h3>Analysis Plan</h3>
@@ -1630,6 +1633,8 @@ characterized as interrupted (having interruptions or gaps larger than
 to avoid labeling artifacts or segmentation errors that present as
 interruptions in a sulcus. Sulci were labeled with a dichotomous
 variable code for presence or absence of an interruption.</p>
+<div id="statistical-testing---reading-v.-ots-anatomy" class="section level4">
+<h4>Statistical Testing - Reading v. OTS Anatomy</h4>
 <p><strong>Reading Statistics &amp; Correlations</strong></p>
 <p>We found the average number and standard deviation of words correctly
 read on the reading test. We then correlated age and number of correctly
@@ -1648,10 +1653,12 @@ and (a) the sulcal pattern of the lateral OTS in the left hemisphere and
 (b) the sulcal pattern of the lateral OTS in the right hemisphere as
 predictor variables</p>
 <p><strong>T-Test</strong></p>
-<p>To determine if either interrupted or continuous left OTS better
-predicted reading abilities, we conducted a t-test comparing reading
-scores of subjects with interrupted left hemisphere OTS and subjects
-with continuous left hemisphere OTS.</p>
+<p>To determine if either interrupted or continuous left OTS - which
+came out as most predictive of reading in the multiple linear
+regressions - better predicted reading abilities, we conducted a t-test
+comparing reading scores of subjects with interrupted left hemisphere
+OTS and subjects with continuous left hemisphere OTS.</p>
+</div>
 </div>
 <div id="differences-from-original-study" class="section level3">
 <h3>Differences from Original Study</h3>
@@ -1673,8 +1680,10 @@ sample.</p>
 <h2>Project Progress Check 1</h2>
 <div id="measure-of-success" class="section level3">
 <h3>Measure of success</h3>
-<p>Please describe the outcome measure for the success or failure of
-your reproduction and how this outcome will be computed.</p>
+<p>Successful reproduction will include finding that the left OTS is a
+better predictor of reading abilities than right OTS or age.
+Additionally, successful reproduction must find that an interrupted left
+OTS better predcits reading abilities than a continous left OTS.</p>
 </div>
 <div id="pipeline-progress" class="section level3">
 <h3>Pipeline progress</h3>
@@ -1691,20 +1700,29 @@ obtained and is undergoing manual labeling on the PowerPoint.</p>
 montage code (screenshot_montage.sh), screenshots of each inferior
 surface (inflated/white) of the right and left hemispheres for eachs
 subject was obtained. Data was manually labeled by the author (JKY) in
-PowerPoint. After being confirmed or edited by an expert anatomist, the
-labels were inputed into FreeSurfer. Subjects were excluded if their MRI
-data showed too much motion, artifacts, or did not have behavioral
-data.</p>
+PowerPoint (see LMB_OTS_Labels.pptx). After being confirmed or edited by
+an expert anatomist, the labels were inputed into FreeSurfer. Subjects
+were excluded if their MRI data showed too much motion, artifacts, or
+did not have behavioral data.</p>
 </div>
 <div id="key-analysis-confirmatory-analysis" class="section level3">
-<h3>Key analysis (Confirmatory Analysis)</h3>
-<p>After conducting multiple regressions to dertiment the variable (left
+<h3>Key analysis (Confirmatory Analysis?)</h3>
+<p>After conducting multiple regressions to determine the variable (left
 or right OTS, age) that was most associated with reading, Borst et
 al. (2016) conducted a t-test comparing reading scores of subjects with
-interrupted OTS versus continous OTS. This determined which left
-hemisphere OTS pattern was a better predictor of reading abilities.</p>
+interrupted OTS versus continuous OTS. This determined which left
+hemisphere OTS pattern was a better predictor of reading abilities. The
+t-test compares the mean reading scores for each group and significant
+results suggest that there is a difference in reading abilities between
+groups. Given that the mean of the interrupted OTS group is higher than
+the mean of the continuous group, this allows for a direct comparison of
+sulcal pattern that will lead to the paper’s main finding (see Figure
+1b) that interrupted sulcal pattern better predicts reading
+abilities.</p>
 <p><em>Side-by-side graph with original graph is ideal here</em></p>
-<p>###Exploratory analyses</p>
+</div>
+<div id="exploratory-analyses" class="section level3">
+<h3>Exploratory analyses</h3>
 <p>Any follow-up analyses desired (not required).</p>
 </div>
 </div>

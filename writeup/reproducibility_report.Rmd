@@ -30,8 +30,10 @@ Project repository: https://github.com/psych251/borst2016.git
 
 Original paper: https://github.com/psych251/borst2016/blob/master/original_paper/Borst_etal_2016_MindBrainEducation.pdf
 
-Paradigm
+**Paradigm**
+
 Labeling PowerPoint: https://github.com/psych251/borst2016/blob/master/LMB_OTS_Labels.pptx
+
 TOWRE: https://github.com/psych251/borst2016/blob/master/TOWREScoring.pdf
 
 ## Methods
@@ -49,7 +51,7 @@ Using pre-collected anatomical MRI data from the Lindamood-Bell (LMB) Reading St
 Children’s reading proficiency were evaluated with the Test of Word Reading Efficiency(TOWRE) test, which is a standardized test for assessing oral reading in English. Participants are instructed to read off words orally as fast as possible while maintaining correct pronunciation. The test is time-limited (45 seconds). In the present study, we focused on reading accuracy, which was reflected by the number of words that were correctly read in 45sec. Children were tested after completing the MRI.
 
 **MRI Data Preparation and Acquisition**
-Pre-acquired three-dimensional (3D) T1-weighted spoiled gradient images using a 3T MRI scanner (GE Discovery Scanner, Stanford University). Image analysis was performed with FreeSurfer (https://surfer.nmr.mgh.harvard.edu), version 6.0. An automated pre-processing step was used to skull-strip the T1 MRIs. Volumes were segmented to grey and white matter to produce a reconstruction of the cortical surface as well as a definition of the cortical ribbon. Images at each processing step for each MRI were visually checked and no motion artifacts or segmentation errors were observed.
+Pre-acquired three-dimensional (3D) T1-weighted spoiled gradient images using a 3T MRI scanner (GE Discovery Scanner, Stanford University). Image analysis was performed with FreeSurfer (https://surfer.nmr.mgh.harvard.edu), version 6.0. An automated pre-processing step was used to skull-strip the T1 MRIs. Volumes were segmented to grey and white matter to produce a reconstruction of the cortical surface as well as a definition of the cortical ribbon. Images at each processing step for each MRI were visually checked and no motion artifacts or segmentation errors were observed. If segmentations could not be fixed, ubjects were excluded on the basis of motion artifacts or general segmentation artifacts.
 
 
 ### Analysis Plan
@@ -66,6 +68,7 @@ Each OTS was defined given the following criteria:
 
 Defined OTS in each subject's left and right hemisphere were then characterized as interrupted (having interruptions or gaps larger than 20mm) or continuous. The 20mm distance was used in previous literature to avoid labeling artifacts or segmentation errors that present as interruptions in a sulcus. Sulci were labeled with a dichotomous variable code for presence or absence of an interruption.
 
+#### Statistical Testing - Reading v. OTS Anatomy
 **Reading Statistics & Correlations**
 
 We found the average number and standard deviation of words correctly read on the reading test. We then correlated age and number of correctly read words.
@@ -82,7 +85,7 @@ Model 3: the number of words correctly read as the outcome variable and (a) the 
 
 **T-Test**
 
-To determine if either interrupted or continuous left OTS better predicted reading abilities, we conducted a t-test comparing reading scores of subjects with interrupted left hemisphere OTS and subjects with continuous left hemisphere OTS.
+To determine if either interrupted or continuous left OTS - which came out as most predictive of reading in the multiple linear regressions - better predicted reading abilities, we conducted a t-test comparing reading scores of subjects with interrupted left hemisphere OTS and subjects with continuous left hemisphere OTS.
 
 ### Differences from Original Study
 
@@ -95,7 +98,7 @@ The sample will also be an English-speaking one, rather than French, so the oral
 
 ### Measure of success
 
-Please describe the outcome measure for the success or failure of your reproduction and how this outcome will be computed.
+Successful reproduction will include finding that the left OTS is a better predictor of reading abilities than right OTS or age. Additionally, successful reproduction must find that an interrupted left OTS better predcits reading abilities than a continous left OTS.
 
 
 ### Pipeline progress
@@ -106,7 +109,7 @@ Data preprocessing is ongoing. Behavioral data for all subjects has been obtaine
 ## Results
 
 ### Data preparation
-Anatomical data was processed in FreeSurfer using reconall. Using a montage code (screenshot_montage.sh), screenshots of each inferior surface (inflated/white) of the right and left hemispheres for eachs subject was obtained. Data was manually labeled by the author (JKY) in PowerPoint. After being confirmed or edited by an expert anatomist, the labels were inputed into FreeSurfer. Subjects were excluded if their MRI data showed too much motion, artifacts, or did not have behavioral data. 
+Anatomical data was processed in FreeSurfer using reconall. Using a montage code (screenshot_montage.sh), screenshots of each inferior surface (inflated/white) of the right and left hemispheres for eachs subject was obtained. Data was manually labeled by the author (JKY) in PowerPoint (see LMB_OTS_Labels.pptx). After being confirmed or edited by an expert anatomist, the labels were inputed into FreeSurfer. Subjects were excluded if their MRI data showed too much motion, artifacts, or did not have behavioral data. 
 
 ```{r include=F}
 ### Data Preparation
@@ -123,13 +126,13 @@ Anatomical data was processed in FreeSurfer using reconall. Using a montage code
 #### Prepare data for analysis - create columns etc.
 ```
 
-### Key analysis (Confirmatory Analysis)
+### Key analysis (Confirmatory Analysis?)
 
-After conducting multiple regressions to determine the variable (left or right OTS, age) that was most associated with reading, Borst et al. (2016) conducted a t-test comparing reading scores of subjects with interrupted OTS versus continuous OTS. This determined which left hemisphere OTS pattern was a better predictor of reading abilities. 
+After conducting multiple regressions to determine the variable (left or right OTS, age) that was most associated with reading, Borst et al. (2016) conducted a t-test comparing reading scores of subjects with interrupted OTS versus continuous OTS. This determined which left hemisphere OTS pattern was a better predictor of reading abilities. The t-test compares the mean reading scores for each group and significant results suggest that there is a difference in reading abilities between groups. Given that the mean of the interrupted OTS group is higher than the mean of the continuous group, this allows for a direct comparison of sulcal pattern that will lead to the paper's main finding (see Figure 1b) that interrupted sulcal pattern better predicts reading abilities. 
 
 *Side-by-side graph with original graph is ideal here*
 
-###Exploratory analyses
+### Exploratory analyses
 
 Any follow-up analyses desired (not required).  
 
