@@ -30,7 +30,9 @@ Project repository: https://github.com/psych251/borst2016.git
 
 Original paper: https://github.com/psych251/borst2016/blob/master/original_paper/Borst_etal_2016_MindBrainEducation.pdf
 
-Paradigm/Labeling: 
+Paradigm
+Labeling PowerPoint: https://github.com/psych251/borst2016/blob/master/LMB_OTS_Labels.pptx
+TOWRE: https://github.com/psych251/borst2016/blob/master/TOWREScoring.pdf
 
 ## Methods
 ### Power Analysis
@@ -123,7 +125,7 @@ Anatomical data was processed in FreeSurfer using reconall. Using a montage code
 
 ### Key analysis (Confirmatory Analysis)
 
-After conducting multiple regressions to dertiment the variable (left or right OTS, age) that was most associated with reading, Borst et al. (2016) conducted a t-test comparing reading scores of subjects with interrupted OTS versus continous OTS. This determined which left hemisphere OTS pattern was a better predictor of reading abilities. 
+After conducting multiple regressions to determine the variable (left or right OTS, age) that was most associated with reading, Borst et al. (2016) conducted a t-test comparing reading scores of subjects with interrupted OTS versus continuous OTS. This determined which left hemisphere OTS pattern was a better predictor of reading abilities. 
 
 *Side-by-side graph with original graph is ideal here*
 
