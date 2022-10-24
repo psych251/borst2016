@@ -104,25 +104,12 @@ Data preprocessing is ongoing. Behavioral data for all subjects has been obtaine
 ## Results
 
 ### Data preparation
-Anatomical data was processed in FreeSurfer using reconall. Using a montage code (below), screenshots of each inferior surface (inflated/white) of the right and left hemispheres for eachs subject was obtained. Data was manually labeled by the author (JKY) in PowerPoint. After being confirmed or edited by an expert anatomist, the labels were inputed into FreeSurfer. Subjects were excluded if their MRI data showed too much motion, artifacts, or did not have behavioral data. 
+Anatomical data was processed in FreeSurfer using reconall. Using a montage code (screenshot_montage.sh), screenshots of each inferior surface (inflated/white) of the right and left hemispheres for eachs subject was obtained. Data was manually labeled by the author (JKY) in PowerPoint. After being confirmed or edited by an expert anatomist, the labels were inputed into FreeSurfer. Subjects were excluded if their MRI data showed too much motion, artifacts, or did not have behavioral data. 
 
-```{bash include=F}
-
+```{r include=F}
 ### Data Preparation
-# Montage/Screenshot Code
-SUBJECTS_DIR=/Users/jkyao/oak/LMB_Stanford/LMB_BIDS/derivatives/freesurfer
-OUT_DIR=/Users/jkyao/Desktop/LMB
-sublist=("107" "108" "1210" "1211" "1215" "1234" "1335" "1339" "1380" "1395" "1444" "1452" "1453" "1468" "173" "230" "309" "984")
-surfaceTypes=("inflated" "pial" "white")
+# Montage/Screenshot Code - see GitHub
 
-
-for SUB in ${sublist[@]};do
-	echo $SUB
-	for surf in ${surfaceTypes[@]};do
-		echo $surf
-		freeview -f ${SUBJECTS_DIR}/sub-${SUB}/surf/rh.${surf}:curvature_method=binary -viewport 3D -f ${SUBJECTS_DIR}/sub-${SUB}/surf/lh.${surf}:curvature_method=binary -viewport 3D -view inferior -ss ${OUT_DIR}/${surf}/${SUB}_${surf}_inferior.png
-	done
-done
 
 #### Load Relevant Libraries and Functions
 
