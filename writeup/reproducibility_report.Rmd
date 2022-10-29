@@ -79,13 +79,36 @@ To determine if there was a relationship between sulcal anatomy and reading abil
 
 Model 1: the number of words correctly read as the outcome variable and (a) the sulcal pattern of the lateral OTS in the left hemisphere, (b) the sulcal pattern of the lateral OTS in the right hemisphere, and (c) age in months as predictor variables
 
+  Model 1: $NumWords \sim leftOTS + rightOTS + age$
+
+```{r}
+#model1 <- lm(num_words ~ lh_latOTS + rh_latOTS + age, data = borst2016 )
+```
+
+
 Model 2: the number of words correctly read as the outcome variable and age in months as a predictor variable
+
+  Model 2: $NumWords \sim age$
+```{r}
+#model2 <- lm(num_words ~ age, data = borst2016 )
+```
 
 Model 3: the number of words correctly read as the outcome variable and (a) the sulcal pattern of the lateral OTS in the left hemisphere and (b) the sulcal pattern of the lateral OTS in the right hemisphere as predictor variables
 
+  Model 3: $NumWords \sim leftOTS + rightOTS$
+```{r}
+#model3 <- lm(num_words ~ lh_latOTS + rh_latOTS, data = borst2016 )
+```
+
+
 **T-Test**
 
-To determine if either interrupted or continuous left OTS - which came out as most predictive of reading in the multiple linear regressions - better predicted reading abilities, we conducted a t-test comparing reading scores of subjects with interrupted left hemisphere OTS and subjects with continuous left hemisphere OTS.
+To determine if either interrupted or continuous left OTS - which came out as most predictive of reading in the multiple linear regressions - better predicted reading abilities, we conducted an independent samples t-test comparing reading scores of subjects with interrupted left hemisphere OTS and subjects with continuous left hemisphere OTS.
+```{r}
+#sulcal_pattern <- t.test(num_words ~ group)
+```
+
+
 
 ### Differences from Original Study
 
@@ -98,12 +121,22 @@ The sample will also be an English-speaking one, rather than French, so the oral
 
 ### Measure of success
 
-Successful reproduction will include finding that the left OTS is a better predictor of reading abilities than right OTS or age. Additionally, successful reproduction must find that an interrupted left OTS better predcits reading abilities than a continous left OTS.
+Successful reproduction will include finding that the left OTS is a better predictor of reading abilities than right OTS or age. Additionally, successful reproduction must find that an interrupted left OTS better predicts reading abilities than a continous left OTS. 
+
+This will be computed first by conducting multiple linear regression to deduce if left OTS sulcal pattern is the best predictor of reading abilities, among other variables. If this does not hold true, this will not be a successful reproduction. If this does hold true, a follow-up independent t-test directly comparing interrupted versus continuous left OTS to see if there is a significant difference between the two groups. If there is a significant difference and the interrupted OTS group has the higher mean score on the reading test, the current study will have successfully reproduced the results of the original paper in its entirety.
 
 
 ### Pipeline progress
 
-Data preprocessing is ongoing. Behavioral data for all subjects has been obtained from the LMB study. Anatomical MRI data has also been obtained and is undergoing manual labeling on the PowerPoint.
+**Data Preprocessing:** Behavioral data for all 16 subjects has been obtained from the LMB study. Anatomical MRI data has also been obtained and has been labeled by JKY in PowerPoint as of 10/25/2022. Monday, 10/31/22, these labels will be verified by Dr. Jason Yeatman. In the following week, these labels will be inputed into Freesurfer and categorized as interrupted or continuous. See labeling PowerPoint for progress. This link (https://docs.google.com/spreadsheets/d/1eUKGWre1dHoy7ZuhP2gx0D3EApDWflwAo26rfU_YYZQ/edit?usp=sharing) is the spreadsheet for tracking labeling progress.
+
+Data wrangling code will also be done this week. Hoping to have the data preparation code block below filled out in the next couple of days.
+
+**Model Fitting:** In terms of statistics, the three multiple linear regressions and the independent samples t-test have been preliminarily coded and added to the methods section. Models have also been added to the methods section. More formal code will be written in the key analysis section below. Given that the data are still being processed, an official testing of the statistical code can be done after about 11/4/2022.
+
+**Model Evaluation:** This will be done next week (hopefully!). See Model Fitting for details.
+
+Currently, I am thinking of additional exploratory analyses that could be conducted. Any thoughts or suggestions would be great! I am thinking about looking at other morphological features (sulcal depth, gyrification index, sulcal length) or other patterns of language related sulci (inferior frontal sulcus) in the frontal lobe if I have time. 
 
 
 ## Results

@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jewelia Yao (jkyao@stanford.edu)" />
 
-<meta name="date" content="2022-10-23" />
+<meta name="date" content="2022-10-29" />
 
 <title>Reproducibility Report for ‘Early Cerebral Constraints on Reading Skills in School-Age Children: An MRI Study’ by Borst et al. (2016, Mind, Brain, &amp; Education)</title>
 
@@ -1501,7 +1501,7 @@ font-size: 0.95em;
 Constraints on Reading Skills in School-Age Children: An MRI Study’ by
 Borst et al. (2016, Mind, Brain, &amp; Education)</h1>
 <h4 class="author">Jewelia Yao (<a href="mailto:jkyao@stanford.edu" class="email">jkyao@stanford.edu</a>)</h4>
-<h4 class="date">October 23, 2022</h4>
+<h4 class="date">October 29, 2022</h4>
 
 </div>
 
@@ -1646,18 +1646,28 @@ reading abilities, we tested three models.</p>
 and (a) the sulcal pattern of the lateral OTS in the left hemisphere,
 (b) the sulcal pattern of the lateral OTS in the right hemisphere, and
 (c) age in months as predictor variables</p>
+<p>Model 1: <span class="math inline">\(NumWords \sim leftOTS + rightOTS
++ age\)</span></p>
+<pre class="r"><code>#model1 &lt;- lm(num_words ~ lh_latOTS + rh_latOTS + age, data = borst2016 )</code></pre>
 <p>Model 2: the number of words correctly read as the outcome variable
 and age in months as a predictor variable</p>
+<p>Model 2: <span class="math inline">\(NumWords \sim age\)</span></p>
+<pre class="r"><code>#model2 &lt;- lm(num_words ~ age, data = borst2016 )</code></pre>
 <p>Model 3: the number of words correctly read as the outcome variable
 and (a) the sulcal pattern of the lateral OTS in the left hemisphere and
 (b) the sulcal pattern of the lateral OTS in the right hemisphere as
 predictor variables</p>
+<p>Model 3: <span class="math inline">\(NumWords \sim leftOTS +
+rightOTS\)</span></p>
+<pre class="r"><code>#model3 &lt;- lm(num_words ~ lh_latOTS + rh_latOTS, data = borst2016 )</code></pre>
 <p><strong>T-Test</strong></p>
 <p>To determine if either interrupted or continuous left OTS - which
 came out as most predictive of reading in the multiple linear
-regressions - better predicted reading abilities, we conducted a t-test
-comparing reading scores of subjects with interrupted left hemisphere
-OTS and subjects with continuous left hemisphere OTS.</p>
+regressions - better predicted reading abilities, we conducted an
+independent samples t-test comparing reading scores of subjects with
+interrupted left hemisphere OTS and subjects with continuous left
+hemisphere OTS.</p>
+<pre class="r"><code>#sulcal_pattern &lt;- t.test(num_words ~ group)</code></pre>
 </div>
 </div>
 <div id="differences-from-original-study" class="section level3">
@@ -1683,13 +1693,45 @@ sample.</p>
 <p>Successful reproduction will include finding that the left OTS is a
 better predictor of reading abilities than right OTS or age.
 Additionally, successful reproduction must find that an interrupted left
-OTS better predcits reading abilities than a continous left OTS.</p>
+OTS better predicts reading abilities than a continous left OTS.</p>
+<p>This will be computed first by conducting multiple linear regression
+to deduce if left OTS sulcal pattern is the best predictor of reading
+abilities, among other variables. If this does not hold true, this will
+not be a successful reproduction. If this does hold true, a follow-up
+independent t-test directly comparing interrupted versus continuous left
+OTS to see if there is a significant difference between the two groups.
+If there is a significant difference and the interrupted OTS group has
+the higher mean score on the reading test, the current study will have
+successfully reproduced the results of the original paper in its
+entirety.</p>
 </div>
 <div id="pipeline-progress" class="section level3">
 <h3>Pipeline progress</h3>
-<p>Data preprocessing is ongoing. Behavioral data for all subjects has
-been obtained from the LMB study. Anatomical MRI data has also been
-obtained and is undergoing manual labeling on the PowerPoint.</p>
+<p><strong>Data Preprocessing:</strong> Behavioral data for all 16
+subjects has been obtained from the LMB study. Anatomical MRI data has
+also been obtained and has been labeled by JKY in PowerPoint as of
+10/25/2022. Monday, 10/31/22, these labels will be verified by Dr. Jason
+Yeatman. In the following week, these labels will be inputed into
+Freesurfer and categorized as interrupted or continuous. See labeling
+PowerPoint for progress. This link (<a href="https://docs.google.com/spreadsheets/d/1eUKGWre1dHoy7ZuhP2gx0D3EApDWflwAo26rfU_YYZQ/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1eUKGWre1dHoy7ZuhP2gx0D3EApDWflwAo26rfU_YYZQ/edit?usp=sharing</a>)
+is the spreadsheet for tracking labeling progress.</p>
+<p>Data wrangling code will also be done this week. Hoping to have the
+data preparation code block below filled out in the next couple of
+days.</p>
+<p><strong>Model Fitting:</strong> In terms of statistics, the three
+multiple linear regressions and the independent samples t-test have been
+preliminarily coded and added to the methods section. Models have also
+been added to the methods section. More formal code will be written in
+the key analysis section below. Given that the data are still being
+processed, an official testing of the statistical code can be done after
+about 11/4/2022.</p>
+<p><strong>Model Evaluation:</strong> This will be done next week
+(hopefully!). See Model Fitting for details.</p>
+<p>Currently, I am thinking of additional exploratory analyses that
+could be conducted. Any thoughts or suggestions would be great! I am
+thinking about looking at other morphological features (sulcal depth,
+gyrification index, sulcal length) or other patterns of language related
+sulci (inferior frontal sulcus) in the frontal lobe if I have time.</p>
 </div>
 </div>
 <div id="results" class="section level2">
