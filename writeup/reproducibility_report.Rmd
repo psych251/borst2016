@@ -81,34 +81,20 @@ Model 1: the number of words correctly read as the outcome variable and (a) the 
 
   Model 1: $NumWords \sim leftOTS + rightOTS + age$
 
-```{r}
-#model1 <- lm(num_words ~ lh_latOTS + rh_latOTS + age, data = borst2016 )
-```
 
 
 Model 2: the number of words correctly read as the outcome variable and age in months as a predictor variable
 
   Model 2: $NumWords \sim age$
-```{r}
-#model2 <- lm(num_words ~ age, data = borst2016 )
-```
 
 Model 3: the number of words correctly read as the outcome variable and (a) the sulcal pattern of the lateral OTS in the left hemisphere and (b) the sulcal pattern of the lateral OTS in the right hemisphere as predictor variables
 
   Model 3: $NumWords \sim leftOTS + rightOTS$
-```{r}
-#model3 <- lm(num_words ~ lh_latOTS + rh_latOTS, data = borst2016 )
-```
 
 
 **T-Test**
 
 To determine if either interrupted or continuous left OTS - which came out as most predictive of reading in the multiple linear regressions - better predicted reading abilities, we conducted an independent samples t-test comparing reading scores of subjects with interrupted left hemisphere OTS and subjects with continuous left hemisphere OTS.
-```{r}
-#sulcal_pattern <- t.test(num_words ~ group)
-```
-
-
 
 ### Differences from Original Study
 
@@ -148,22 +134,73 @@ Anatomical data was processed in FreeSurfer using reconall. Using a montage code
 ### Data Preparation
 # Montage/Screenshot Code - see GitHub
 
-
 #### Load Relevant Libraries and Functions
-
+library(tidyverse)
 #### Import data
+d <- read.csv('data/borst2016_replication.csv')
+colnames(d)
 
 #### Data exclusion / filtering
-##### Subjects were excluded if their MRI data showed too much motion, artifacts, or did not have behavioral data. 
+##### Subjects were excluded before data analysis if their MRI data showed too much motion, artifacts, or did not have behavioral data. 
+```
 
+
+```{r}
 #### Prepare data for analysis - create columns etc.
+filtered_d <- d %>%
+  select("record_id", "rh_OTS", "lh_OTS", "visit_age_yrs_rounded", "twre_swe_ss")
+
+colnames(filtered_d) <- c('ID','rhOTS','lhOTS', 'age', 'towre_score')
+
 ```
 
 ### Key analysis (Confirmatory Analysis?)
 
 After conducting multiple regressions to determine the variable (left or right OTS, age) that was most associated with reading, Borst et al. (2016) conducted a t-test comparing reading scores of subjects with interrupted OTS versus continuous OTS. This determined which left hemisphere OTS pattern was a better predictor of reading abilities. The t-test compares the mean reading scores for each group and significant results suggest that there is a difference in reading abilities between groups. Given that the mean of the interrupted OTS group is higher than the mean of the continuous group, this allows for a direct comparison of sulcal pattern that will lead to the paper's main finding (see Figure 1b) that interrupted sulcal pattern better predicts reading abilities. 
 
+```{r}
+sulcal_pattern <- t.test(towre_score ~ lhOTS, data=filtered_d)
+sulcal_pattern
+```
+
 *Side-by-side graph with original graph is ideal here*
+
+```{r}
+filtered_d %>%
+  ggplot(data = ., aes(x = lhOTS, y = towre_score)) +
+    # Aesthetics
+    theme_bw() +
+    scale_fill_grey() +
+    theme(panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          panel.border = element_blank(),
+          axis.line = element_line()) +
+    # Data
+  geom_bar(stat="identity", color="black", position=position_dodge()) +
+  #geom_errorbar( aes(ymin = Rating-se, ymax = Rating+se), width=0.2,position=position_dodge(width = 0.9, preserve = "single")) +
+  labs(title="Figure 1 Replication",
+        x ="Left OTS Morphology", y = "Number of Words Read Correctly")
+
+```
+
+### Additional analyses
+
+```{r}
+model1 <- lm(towre_score ~ lhOTS + rhOTS + age, data = filtered_d)
+summary(model1)
+```
+
+
+```{r}
+model2 <- lm(towre_score ~ age, data = filtered_d)
+summary(model2)
+```
+
+
+```{r}
+model3 <- lm(towre_score ~ lhOTS + rhOTS, data = filtered_d)
+summary(model3)
+```
 
 ### Exploratory analyses
 
