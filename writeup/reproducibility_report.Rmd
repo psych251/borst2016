@@ -39,7 +39,12 @@ TOWRE: https://github.com/psych251/borst2016/blob/master/TOWREScoring.pdf
 ## Methods
 ### Power Analysis
 
-Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size.
+Original effect size: d = 1.19
+80% Power: N = 13 per group
+90% Power: N = 16 per group
+95% Power: N = 20 per group
+
+Given that it is impossible to randomly sample people based on neuroanatomy and given the restrictions of the dataset, the sizes of each group will not be equal. In line with the original study, I will also use 16 subjects because a) the dataset I am using only has 18 subjects so far and b) I think it will be useful to make a point about whether this is enough subjects for making claims about neuroanatomical-behavior relationships.
 
 ### Participants
 
@@ -124,7 +129,7 @@ Data wrangling code will also be done this week. Hoping to have the data prepara
 
 Currently, I am thinking of additional exploratory analyses that could be conducted. Any thoughts or suggestions would be great! I am thinking about looking at other morphological features (sulcal depth, gyrification index, sulcal length) or other patterns of language related sulci (inferior frontal sulcus) in the frontal lobe if I have time. 
 
-## Progress Check 2:
+## Progress Check 2
 
 **Data Preprocessing:** 
 Dataframe: created and cleaned dataframe, combined behavioral data with preliminary (hasn't yet gotten verified by 2nd and 3rd raters) anatomical data
@@ -137,6 +142,17 @@ Ran models and t-test (confirmatory) analysis on the unconfirmed data.
 **Model Evaluation:**
 Created rough ggplot to match figure 1 of the paper. Uploaded original figure 1 and dataframe to github folder (see ~writeups/data/)
 
+
+## Progress Check 3
+
+**Data Preprocessing:** 
+Data (I rated) has been fixed according to criteria in the methods, but I still need to put it into a new dataframe after the other 2 raters have finished rating. Got confirmation from 2nd and 3rd raters that they would be willing to rate the 16 brains (which will be done by Wednesday next week!). Checked with RAs to figure out which behavioral scores to use.
+
+**Model Fitting:** 
+Models and t-test (confirmatory) analysis ready to be re-run on the fixed data.
+
+**Model Evaluation:**
+Edited ggplot to be cleaner and more like the original paper. Because 16 subjects is not a lot and likely not enough to get a d of 1.19 (see power analysis section, which has been updated), I am planning on doing a meta-analysis. After break, I'll meet with Mike to talk about the meta-analysis, so still waiting on that! 
 
 ## Results
 
@@ -167,7 +183,7 @@ colnames(filtered_d) <- c('ID','rhOTS','lhOTS', 'age', 'towre_score')
 
 ```
 
-### Key analysis (Confirmatory Analysis?)
+### Key analysis
 
 After conducting multiple regressions to determine the variable (left or right OTS, age) that was most associated with reading, Borst et al. (2016) conducted a t-test comparing reading scores of subjects with interrupted OTS versus continuous OTS. This determined which left hemisphere OTS pattern was a better predictor of reading abilities. The t-test compares the mean reading scores for each group and significant results suggest that there is a difference in reading abilities between groups. Given that the mean of the interrupted OTS group is higher than the mean of the continuous group, this allows for a direct comparison of sulcal pattern that will lead to the paper's main finding (see Figure 1b) that interrupted sulcal pattern better predicts reading abilities. 
 
@@ -177,10 +193,20 @@ sulcal_pattern
 ```
 
 *Side-by-side graph with original graph is ideal here*
+```{r}
+std.err <- function(x) sd(x)/sqrt(length(x))
+
+Fig1 <- filtered_d %>% 
+  group_by(lhOTS) %>%
+  summarize(
+    se = std.err(towre_score),
+    towre = mean(towre_score, na.rm = TRUE))
+```
+
 
 ```{r}
-filtered_d %>%
-  ggplot(data = ., aes(x = lhOTS, y = towre_score)) +
+Fig1 %>%
+  ggplot(data = ., aes(x = lhOTS, y = towre)) +
     # Aesthetics
     theme_bw() +
     scale_fill_grey() +
@@ -189,8 +215,8 @@ filtered_d %>%
           panel.border = element_blank(),
           axis.line = element_line()) +
     # Data
-  geom_bar(stat="identity", color="black", position=position_dodge()) +
-  #geom_errorbar( aes(ymin = Rating-se, ymax = Rating+se), width=0.2,position=position_dodge(width = 0.9, preserve = "single")) +
+  geom_bar(stat="identity", color="black", position=position_dodge(), width = 0.5) +
+  geom_errorbar( aes(ymin = towre-se, ymax = towre+se), width=0.2,position=position_dodge(width = 0.9, preserve = "single")) +
   labs(title="Figure 1 Replication",
         x ="Left OTS Morphology", y = "Number of Words Read Correctly")
 
@@ -217,7 +243,7 @@ summary(model3)
 
 ### Exploratory analyses
 
-Any follow-up analyses desired (not required).  
+Meta-analysis goes here!
 
 ## Discussion
 
